@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
 class UserController extends Controller
 {
     public function __construct() {
@@ -26,5 +26,9 @@ class UserController extends Controller
         $data['id'] = 5 ;
         $data['name'] = 'abod';
        return view('welcome',$data);
+    }
+
+    public function getinfo(){
+      return   User::get();
     }
 }
