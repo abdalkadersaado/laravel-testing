@@ -9,6 +9,10 @@ use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
 use LaravelLocalization;
 use App\Traits\OfferTrait;
+use App\Events\VideoViewer;
+use App\Models\Video;
+use App\Listeners\IncreaseCounter;
+
 
 class OfferController extends Controller
 {
@@ -155,6 +159,20 @@ class OfferController extends Controller
        'details_' . LaravelLocalization::getCurrentLocale() . ' as details' ,
        'price')->get();
        return view('offers.all',compact('offers'));
+    }
+
+    public function getviewer()
+        {
+
+        $video = Video::first();
+
+        event(new VideoViewer($video));
+
+       // event(new VideoViewer($video)); //fire event
+
+         return view('vedio',compact('video'));
+
+        
     }
 
     

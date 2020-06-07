@@ -32,4 +32,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
             
             route::get('all','OfferController@getAllOffers');
             });
+
+            route::get('youtube','OfferController@getviewer');
 });
