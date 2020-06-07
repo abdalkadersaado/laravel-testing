@@ -88,7 +88,17 @@
         </form>
     </div>
 </nav>
+@if(Session::has('success'))
+<div class="alert alert-success">
+            {{Session::get('success')}}
+</div>
+@endif
 
+@if(Session::has('error'))
+<div class="alert alert-danger">
+{{Session::get('error')}}
+</div>
+@endif
 <table class="table">
   <thead>
     <tr>
@@ -108,6 +118,7 @@
       <td>{{$offer->price}}</td>
       <td>{{$offer->details}}</td>
       <td><a href="{{URL('offers/edit/'.$offer->id)}}" class="btn btn-success">{{__('messages.update')}}</a></td>
+      <td><a href="{{route('offer.delete',$offer->id)}}" class="btn btn-danger">{{__('messages.delete')}}</a></td>
 
     </tr>
    @endforeach

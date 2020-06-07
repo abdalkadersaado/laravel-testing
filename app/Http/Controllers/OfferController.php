@@ -161,6 +161,18 @@ class OfferController extends Controller
        return view('offers.all',compact('offers'));
     }
 
+    public function delete($offer_id)
+    {
+        //check if offer id exists in database or not
+       $offer= Offer::find($offer_id);
+       if(!$offer)
+       {
+        return redirect()->back()->with(['error'=> __('messages.offer not exist')]);
+       }
+           $offer->delete();
+           return redirect()->route('offers.all')->with(['success'=>__('messages.offer deleted successfully')]);
+       
+    }
     public function getviewer()
         {
 

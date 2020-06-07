@@ -29,8 +29,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
             route::get('create','OfferController@create');
             route::get('edit/{offer_id}','OfferController@edit');
             route::post('update/{offer_id}','OfferController@update')->name('offer.update');
-            
-            route::get('all','OfferController@getAllOffers');
+            route::get('delete/{offer_id}','OfferController@delete')->name('offer.delete');
+            route::get('all','OfferController@getAllOffers')->name('offers.all');
             });
 
             route::get('youtube','OfferController@getviewer');
